@@ -1,2 +1,9 @@
-/* css/input.css */
 @import "tailwindcss";
+
+/* Add these lines to fix the missing styles */
+@source "../pages/**/*.html";
+@source "../index.html";
+
+@theme {
+  --color-zeqla-blue: #2563eb; /* Replace with your exact hex code */
+}
