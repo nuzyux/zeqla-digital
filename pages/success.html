@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful | Zeqla</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts: PT Serif -->
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        /* CHANGED: Consistent Font */
+                        sans: ['"PT Serif"', 'serif'],
+                    },
+                    colors: {
+                        brand: { 50: '#f0f9ff', 100: '#e0f2fe', 500: '#0ea5e9', 600: '#0284c7', 900: '#0c4a6e' },
+                        dark: { bg: '#0f172a', card: '#1e293b', border: '#334155' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark-bg font-sans text-white flex items-center justify-center min-h-screen">
+
+    <div class="max-w-md w-full p-6 text-center">
+        <!-- Success Animation Icon -->
+        <div class="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce">
+            <i class="fa-solid fa-check text-5xl text-green-500"></i>
+        </div>
+
+        <h1 class="text-3xl font-bold mb-4">Payment Successful!</h1>
+        <p class="text-gray-400 mb-8">
+            Thank you for your purchase. We are verifying the transaction on the blockchain. Your downloads will be available in your profile shortly.
+        </p>
+
+        <div class="space-y-4">
+            <a href="profile-products.html" class="block w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-lg transition-colors shadow-lg shadow-brand-500/25">
+                Go to My Library
+            </a>
+            <a href="../index.html" class="block w-full bg-dark-card hover:bg-dark-border border border-dark-border text-white font-bold py-3 rounded-lg transition-colors">
+                Return Home
+            </a>
+        </div>
+    </div>
+
+    <!-- Logic to Clear Cart -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Clear the local storage cart since they just paid
+            localStorage.removeItem('zeqla_cart');
+            console.log("Cart cleared after successful payment.");
+        });
+    </script>
+
+</body>
+</html>

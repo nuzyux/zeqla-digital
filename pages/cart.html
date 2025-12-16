@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | Zeqla</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts: PT Serif -->
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"PT Serif"', 'serif'],
+                    },
+                    colors: {
+                        page: {
+                            bg: '#F8FAFC',
+                            surface: '#FFFFFF',
+                            card: '#FFFFFF',
+                            border: '#E2E8F0',
+                            text: '#64748B',
+                            heading: '#0F172A'
+                        },
+                        brand: {
+                            400: '#60A5FA',
+                            500: '#2563EB',
+                            600: '#1D4ED8',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-page-bg font-sans text-page-heading">
+
+    <nav class="glass-nav fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex justify-between items-center h-16">
+                <a href="../index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                    <img src="../assets/images/logo.png" alt="Zeqla" class="h-10 w-auto hover:opacity-90 transition-opacity">
+                </a>
+                
+                <!-- STABLE NAV -->
+                <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 space-x-8">
+                    <a href="../index.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">Home</a>
+                    <a href="products.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">Products</a>
+                    <a href="pricing.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">Pricing</a>
+                    <a href="about.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">About</a>
+                </div>
+
+                <div class="flex items-center gap-5">
+                    <!-- NEW SELLER LINK (Moved Here) -->
+                    <a href="become-seller.html" class="hidden md:flex items-center gap-2 text-sm font-bold text-page-heading hover:text-brand-600 transition-colors bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-full border border-brand-200">
+                        <i class="fa-solid fa-store text-brand-500"></i>
+                        <span>Become a Seller</span>
+                    </a>
+
+                    <a href="cart.html" class="text-brand-600 relative">
+                        <i class="fa-solid fa-cart-shopping text-lg"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-brand-500 text-gray-900 text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                    </a>
+                    <div id="nav-auth-section" class="hidden md:flex items-center">
+                        <div class="w-24 h-9 bg-gray-200 rounded animate-pulse"></div>
+                    </div>
+
+                    <button id="mobile-menu-btn" class="md:hidden text-page-text hover:text-page-heading">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-page-surface border-t border-page-border">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="../index.html" class="block px-3 py-2 rounded-md text-base font-medium text-brand-500 bg-page-bg border border-page-border">Home</a>
+                <a href="products.html" class="block px-3 py-2 rounded-md text-base font-medium text-page-text hover:text-page-heading hover:bg-page-bg">Products</a>
+                <a href="pricing.html" class="block px-3 py-2 rounded-md text-base font-medium text-page-text hover:text-page-heading hover:bg-page-bg">Pricing</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-page-text hover:text-page-heading hover:bg-page-bg">About</a>
+                <a href="become-seller.html" class="block px-3 py-2 rounded-md text-base font-bold text-brand-600 hover:bg-page-bg">Become a Seller</a>
+                <a href="auth.html" class="block px-3 py-2 rounded-md text-base font-medium text-brand-500 hover:bg-page-bg">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 min-h-screen pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold mb-8 border-b border-page-border pb-4 text-page-heading">Cart Manifest</h1>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- LEFT: Cart Items -->
+            <div class="flex-grow">
+                <div id="cart-items-container" class="bg-white border border-page-border rounded-xl p-6 min-h-[300px] shadow-sm">
+                    <div class="animate-pulse space-y-4">
+                        <div class="h-24 bg-slate-100 rounded border border-slate-200"></div>
+                        <div class="h-24 bg-slate-100 rounded border border-slate-200"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Summary -->
+            <div id="cart-summary" class="w-full lg:w-96 flex-shrink-0" style="display: none;">
+                <div class="bg-white border border-page-border rounded-xl p-6 sticky top-24 shadow-sm">
+                    <h2 class="text-lg font-bold text-page-heading mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-receipt text-brand-500"></i> Summary
+                    </h2>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex justify-between text-sm text-page-text">
+                            <span>Subtotal</span>
+                            <span id="summary-subtotal" class="text-page-heading font-bold font-mono">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-page-text">
+                            <span>Taxes (Est.)</span>
+                            <span class="text-page-heading font-bold font-mono">$0.00</span>
+                        </div>
+                        <div class="border-t border-page-border pt-4 flex justify-between font-bold text-page-heading text-xl">
+                            <span>Total</span>
+                            <span id="summary-total" class="text-brand-600 font-mono">$0.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Checkout Button -->
+                    <button onclick="attemptCheckout()" class="w-full btn-impulse bg-brand-500 hover:bg-brand-600 text-white font-bold py-4 rounded-lg transition-all mb-4 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-lock"></i> Secure Checkout
+                    </button>
+                    
+                    <div class="flex items-center justify-center gap-6 text-gray-400 text-2xl pt-2">
+                        <i class="fa-brands fa-bitcoin hover:text-brand-600 transition-colors"></i>
+                        <i class="fa-brands fa-ethereum hover:text-brand-600 transition-colors"></i>
+                        <i class="fa-brands fa-stripe hover:text-brand-600 transition-colors"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- AUTH MODAL -->
+    <div id="auth-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeAuthModal()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm bg-white border border-page-border rounded-2xl shadow-2xl p-8 text-center">
+            <div class="w-16 h-16 bg-brand-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fa-solid fa-user-lock text-2xl text-brand-500"></i>
+            </div>
+            <h2 class="text-xl font-bold text-page-heading mb-2">Authentication Required</h2>
+            <p class="text-page-text text-sm mb-8">Login to associate these licenses with your developer ID.</p>
+            <div class="space-y-3">
+                <a href="auth.html" class="block w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-lg transition-colors">Sign In</a>
+                <a href="auth.html" class="block w-full bg-slate-50 hover:bg-slate-100 border border-page-border text-page-heading font-bold py-3 rounded-lg transition-colors">Create ID</a>
+            </div>
+            <button onclick="closeAuthModal()" class="mt-6 text-page-text hover:text-page-heading text-xs">Cancel</button>
+        </div>
+    </div>
+
+    <!-- PAYMENT MODAL -->
+    <div id="payment-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closePaymentModal()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white border border-page-border rounded-2xl shadow-2xl p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold text-page-heading">Select Protocol</h2>
+                <button onclick="closePaymentModal()" class="text-gray-400 hover:text-page-heading"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+
+            <div class="space-y-3">
+                <button id="btn-pay-coinbase" class="w-full flex items-center justify-between bg-blue-50 border border-blue-200 hover:bg-blue-100 p-4 rounded-xl transition-all group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-[#0052FF] rounded-lg flex items-center justify-center text-white shadow-md">
+                            <i class="fa-solid fa-cube text-xl"></i>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="font-bold text-page-heading group-hover:text-[#0052FF] transition-colors">Crypto (Coinbase)</h3>
+                            <p class="text-xs text-page-text">BTC, ETH, USDC, LTC</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-[#0052FF]"></i>
+                </button>
+
+                <div class="grid grid-cols-2 gap-3 opacity-50 grayscale">
+                    <div class="bg-slate-50 border border-page-border p-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-not-allowed">
+                        <i class="fa-brands fa-stripe text-2xl text-gray-400"></i>
+                        <span class="text-xs text-gray-500 font-bold">Soon</span>
+                    </div>
+                    <div class="bg-slate-50 border border-page-border p-4 rounded-xl flex flex-col items-center justify-center gap-2 cursor-not-allowed">
+                        <i class="fa-brands fa-paypal text-xl text-gray-400"></i>
+                        <span class="text-xs text-gray-500 font-bold">Soon</span>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-6 text-center text-xs text-page-text flex items-center justify-center gap-2">
+                <i class="fa-solid fa-shield-halved"></i> 256-bit SSL Encrypted Connection
+            </p>
+        </div>
+    </div>
+
+    <!-- External Script for Logic -->
+    <script type="module" src="../js/cart-page.js"></script>
+
+    <!-- Scripts -->
+    <script src="../js/data.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/coinbase.js"></script>
+    <script type="module" src="../js/auth.js"></script>
+</body>
+</html>

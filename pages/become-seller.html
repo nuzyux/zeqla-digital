@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Seller | Zeqla</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"PT Serif"', 'serif'] },
+                    colors: {
+                        page: { bg: '#F8FAFC', surface: '#FFFFFF', border: '#E2E8F0', heading: '#0F172A' },
+                        brand: { 500: '#2563EB', 600: '#1D4ED8' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-page-bg font-sans text-page-heading">
+
+    <!-- Simple Nav -->
+    <nav class="h-20 border-b border-page-border bg-white flex items-center px-8 justify-between sticky top-0 z-50">
+        <a href="../index.html" class="flex items-center gap-2">
+            <img src="../assets/images/logo.png" alt="Zeqla" class="h-8 w-auto">
+            <span class="text-xs font-bold uppercase tracking-widest text-gray-400 border-l border-gray-300 pl-2 ml-2">Partner Application</span>
+        </a>
+        <a href="../index.html" class="text-sm font-bold text-gray-500 hover:text-brand-500">Exit</a>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-6 py-16">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold mb-4">Join the Elite.</h1>
+            <p class="text-gray-500">We verify every seller to ensure Zeqla remains a repository of quality, not quantity. Tell us about your craft.</p>
+        </div>
+
+        <form id="seller-form" class="bg-white border border-page-border rounded-xl p-8 shadow-sm space-y-8">
+            
+            <!-- 1. Identity -->
+            <div>
+                <h3 class="text-sm font-bold uppercase tracking-widest text-brand-500 mb-6 border-b border-gray-100 pb-2">1. Developer Identity</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Full Name / Entity Name</label>
+                        <input type="text" id="name" required class="w-full bg-slate-50 border border-page-border rounded-lg px-4 py-3 text-sm focus:border-brand-500 focus:outline-none transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Business Email</label>
+                        <input type="email" id="email" required class="w-full bg-slate-50 border border-page-border rounded-lg px-4 py-3 text-sm focus:border-brand-500 focus:outline-none transition-all">
+                    </div>
+                    <div class="col-span-1 md:col-span-2">
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Portfolio / GitHub URL</label>
+                        <input type="url" id="portfolio" required placeholder="https://github.com/username" class="w-full bg-slate-50 border border-page-border rounded-lg px-4 py-3 text-sm focus:border-brand-500 focus:outline-none transition-all">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Expertise -->
+            <div>
+                <h3 class="text-sm font-bold uppercase tracking-widest text-brand-500 mb-6 border-b border-gray-100 pb-2">2. Technical Expertise</h3>
+                
+                <div class="mb-6">
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-3">Primary Tech Stack</label>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <label class="flex items-center gap-2 p-3 border border-page-border rounded-lg cursor-pointer hover:bg-slate-50">
+                            <input type="checkbox" name="stack" value="React/Next.js" class="accent-brand-500"> <span class="text-sm">React / Next</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-3 border border-page-border rounded-lg cursor-pointer hover:bg-slate-50">
+                            <input type="checkbox" name="stack" value="Vue/Nuxt" class="accent-brand-500"> <span class="text-sm">Vue / Nuxt</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-3 border border-page-border rounded-lg cursor-pointer hover:bg-slate-50">
+                            <input type="checkbox" name="stack" value="Python" class="accent-brand-500"> <span class="text-sm">Python / AI</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-3 border border-page-border rounded-lg cursor-pointer hover:bg-slate-50">
+                            <input type="checkbox" name="stack" value="Mobile" class="accent-brand-500"> <span class="text-sm">Flutter / RN</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Experience Level</label>
+                    <select id="experience" class="w-full bg-slate-50 border border-page-border rounded-lg px-4 py-3 text-sm focus:border-brand-500 focus:outline-none">
+                        <option value="freelancer">Freelancer (1-3 Years)</option>
+                        <option value="senior">Senior Engineer (3-7 Years)</option>
+                        <option value="agency">Agency / Studio (Team)</option>
+                        <option value="architect">Enterprise Architect (7+ Years)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 3. Intent -->
+            <div>
+                <h3 class="text-sm font-bold uppercase tracking-widest text-brand-500 mb-6 border-b border-gray-100 pb-2">3. Product Intent</h3>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">What type of assets do you plan to list?</label>
+                        <textarea id="intent_products" required rows="2" class="w-full bg-slate-50 border border-page-border rounded-lg p-3 text-sm focus:border-brand-500 focus:outline-none" placeholder="E.g., High-fidelity SaaS starters, Crypto trading bots..."></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Why Zeqla?</label>
+                        <textarea id="intent_motivation" required rows="2" class="w-full bg-slate-50 border border-page-border rounded-lg p-3 text-sm focus:border-brand-500 focus:outline-none" placeholder="Why is your code a good fit for our premium marketplace?"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-page-border flex items-center justify-between">
+                <p class="text-xs text-gray-400">By submitting, you agree to our 
+                    <button type="button" onclick="openTermsModal()" class="underline font-bold text-brand-600 hover:text-brand-500 transition-colors">Seller Terms</button>.
+                </p>
+                <button type="submit" id="submit-btn" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-brand-500/20 transition-all flex items-center gap-2">
+                    Submit Application <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <!-- SUCCESS MODAL (Application Submitted) -->
+    <div id="success-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl p-8 max-w-sm w-full text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600">
+                <i class="fa-solid fa-check text-2xl"></i>
+            </div>
+            <h2 class="text-2xl font-bold mb-2">Application Received</h2>
+            <p class="text-gray-500 text-sm mb-6">Our team will review your code samples and get back to you within 48 hours.</p>
+            <a href="../index.html" class="block w-full bg-slate-900 text-white py-3 rounded-lg font-bold">Return Home</a>
+        </div>
+    </div>
+
+    <!-- SELLER TERMS MODAL (New Full Screen Modal) -->
+    <div id="terms-modal" class="fixed inset-0 z-[110] hidden">
+        <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="w-full max-w-4xl h-full max-h-[95vh] bg-white rounded-xl shadow-2xl flex flex-col">
+                <!-- Header -->
+                <div class="sticky top-0 bg-white border-b border-page-border p-4 flex justify-between items-center z-10">
+                    <h2 class="text-xl font-bold text-page-heading">Zeqla Seller Terms & Conditions</h2>
+                    <button onclick="closeTermsModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 transition-colors">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                
+                <!-- Content Body -->
+                <div class="flex-1 overflow-y-auto p-8 prose prose-slate max-w-none">
+                    <p class="text-sm text-gray-500 italic">Effective Date: December 16, 2025</p>
+
+                    <h3 class="text-lg font-bold mt-6">1. Product Quality and Submission Requirements</h3>
+                    <p>All digital products submitted to Zeqla must meet high professional standards for code quality, documentation, and functionality.</p>
+                    
+                    <h4 class="text-base font-semibold mt-4">1.1 Accepted Languages and Frameworks</h4>
+                    <p>We only accept projects built with enterprise-level or modern, clean codebases. The following are examples of accepted technologies:</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>Frontend/Full Stack:</strong> React, Next.js, Vue.js, Nuxt.js, Svelte, Angular, TypeScript, Tailwind CSS, Bootstrap 5.</li>
+                        <li><strong>Backend/APIs:</strong> Python (Django, FastAPI), Node.js (Express, NestJS), Go, Rust, Java (Spring).</li>
+                        <li><strong>Mobile/Cross-Platform:</strong> Flutter, React Native, Swift (iOS), Kotlin (Android).</li>
+                        <li><strong>Databases:</strong> PostgreSQL, MongoDB, Firebase/Firestore, PlanetScale.</li>
+                    </ul>
+
+                    <h4 class="text-base font-semibold mt-4">1.2 Prohibited Content</h4>
+                    <p class="font-bold text-red-600">The following content is strictly prohibited and will result in permanent account termination:</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Any tools classified as <strong>hacking, malware, or illegal exploitation</strong> software. This includes unauthorized scanners, DDoS scripts, or keyloggers.</li>
+                        <li>Content that promotes illegal activities, hate speech, or severe toxicity.</li>
+                        <li>Source code that is copied, plagiarized, or obtained from public repositories (e.g., GitHub) without significant, original value-add.</li>
+                    </ul>
+                    
+                    <h3 class="text-lg font-bold mt-6">2. Financial Terms and Payouts</h3>
+                    
+                    <h4 class="text-base font-semibold mt-4">2.1 Commission Structure</h4>
+                    <p>Listing digital assets on the Zeqla marketplace is <strong>completely free</strong>. Sellers retain a significant majority of the sales price:</p>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 font-mono text-sm mt-2">
+                        <div class="flex justify-between max-w-xs">
+                            <span>Seller Revenue Share:</span>
+                            <strong>93%</strong>
+                        </div>
+                        <div class="flex justify-between max-w-xs">
+                            <span>Zeqla Platform Fee:</span>
+                            <strong>7%</strong>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">(Covers payment processing, hosting, and platform maintenance)</p>
+                    </div>
+
+                    <h4 class="text-base font-semibold mt-4">2.2 Payouts and Incentives</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>Payout Frequency:</strong> Payments are processed on a <strong>weekly basis</strong> once the product sales are finalized.</li>
+                        <li><strong>Custom Promo Codes:</strong> Sellers receive tools to create and manage custom promo codes, enabling unique discounts and tracking conversions.</li>
+                        <li><strong>Affiliate Links:</strong> Sellers can use custom affiliate links to earn bonuses on sales generated for <em>other</em> Zeqla products.</li>
+                    </ul>
+
+                    <h3 class="text-lg font-bold mt-6">3. Seller Community and Tools</h3>
+                    <p>Verified sellers are recognized as Zeqla partners and gain access to advanced resources:</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>Private Community:</strong> Access to the exclusive private Zeqla Discord channel for collaboration, early feedback, and direct communication with the Zeqla team.</li>
+                        <li><strong>Custom Identity Cards:</strong> Each seller receives a custom-designed digital Zeqla card for their wallet, signifying their verified status and potentially unlocking future platform bonuses or discounts.</li>
+                    </ul>
+                </div>
+                
+                <!-- Footer -->
+                <div class="sticky bottom-0 bg-slate-50 border-t border-page-border p-4 flex justify-between items-center rounded-b-xl">
+                    <p class="text-xs text-gray-500">Read this document carefully before submitting your application.</p>
+                    <img src="../assets/images/logo.png" alt="Zeqla Logo" class="h-6 opacity-70">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../js/become-seller.js"></script>
+</body>
+</html>

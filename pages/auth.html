@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | Zeqla</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts: PT Serif -->
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        /* CHANGED: Set default sans stack to PT Serif */
+                        sans: ['"PT Serif"', 'serif'],
+                    },
+                    colors: {
+                        // THE NEW DEVELOPER PALETTE
+                        dark: {
+                            bg: '#0B0E14',       // Deep Void (Main Body)
+                            surface: '#0F1115',  // Secondary (Nav/Sidebar)
+                            card: '#111827',     // Component BG (Cards)
+                            border: '#1F2937',   // Subtle Borders
+                            text: '#9CA3AF'      // Muted Text
+                        },
+                        // HIGH CONTRAST ACCENTS (For Impulse Buys)
+                        brand: {
+                            400: '#60A5FA',
+                            500: '#3B82F6', // Electric Blue
+                            600: '#2563EB', // Deep Blue
+                            accent: '#6366F1' // Indigo
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px -5px rgba(59, 130, 246, 0.5)',
+                        'glow-lg': '0 0 30px -5px rgba(59, 130, 246, 0.6)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark-bg font-sans text-white h-screen flex items-center justify-center relative overflow-hidden">
+
+    <!-- Background Glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-0 pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="w-full max-w-md p-8 relative z-10">
+        <!-- Logo -->
+        <a href="../index.html" class="flex justify-center items-center gap-2 mb-8 hover:opacity-80 transition-opacity">
+            <img src="../assets/images/logo-dark.png" alt="Zeqla" class="h-10 w-auto hover:opacity-90 transition-opacity">
+        </a>
+
+        <!-- Auth Card -->
+        <div class="bg-dark-card border border-dark-border rounded-2xl p-8 shadow-2xl">
+            <!-- Tabs -->
+            <div class="flex mb-6 border-b border-dark-border">
+                <button id="tab-login" class="flex-1 pb-4 text-sm font-medium border-b-2 border-brand-500 text-white transition-colors">Sign In</button>
+                <button id="tab-register" class="flex-1 pb-4 text-sm font-medium border-b-2 border-transparent text-gray-400 hover:text-white transition-colors">Create Account</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">Email Address</label>
+                    <input type="email" class="w-full bg-dark-bg border border-dark-border rounded-lg px-4 py-3 text-sm text-white focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all" placeholder="name@example.com" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">Password</label>
+                    <input type="password" class="w-full bg-dark-bg border border-dark-border rounded-lg px-4 py-3 text-sm text-white focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all" placeholder="••••••••" required>
+                </div>
+                <div class="flex justify-end">
+                    <a href="#" class="text-xs text-brand-500 hover:text-brand-400">Forgot password?</a>
+                </div>
+                <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-lg transition-all shadow-lg shadow-brand-500/20">
+                    Sign In
+                </button>
+            </form>
+
+            <!-- Register Form (Hidden) -->
+            <form id="register-form" class="space-y-4 hidden">
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">Full Name</label>
+                    <input type="text" class="w-full bg-dark-bg border border-dark-border rounded-lg px-4 py-3 text-sm text-white focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all" placeholder="John Doe" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">Email Address</label>
+                    <input type="email" class="w-full bg-dark-bg border border-dark-border rounded-lg px-4 py-3 text-sm text-white focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all" placeholder="name@example.com" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">Password</label>
+                    <input type="password" class="w-full bg-dark-bg border border-dark-border rounded-lg px-4 py-3 text-sm text-white focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all" placeholder="Create a password" required>
+                </div>
+                <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-lg transition-all shadow-lg shadow-brand-500/20">
+                    Create Account
+                </button>
+            </form>
+
+            <div class="relative my-6">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-dark-border"></div>
+                </div>
+                <div class="relative flex justify-center text-xs">
+                    <span class="bg-dark-card px-2 text-gray-500">Or continue with</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <!-- Google Button -->
+                <button type="button" id="btn-google" class="w-full bg-white hover:bg-gray-100 text-dark-bg font-medium py-3 rounded-lg transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-google text-red-500"></i>
+                    <span>Sign in with Google</span>
+                </button>
+
+                <!-- GitHub Button -->
+                <button type="button" id="btn-github" class="w-full bg-[#24292e] hover:bg-[#2f363d] text-white font-medium py-3 rounded-lg transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-github text-white"></i>
+                    <span>Sign in with GitHub</span>
+                </button>
+            </div>
+        </div>
+        
+        <p class="text-center text-gray-500 text-xs mt-8">
+            &copy; 2024 Zeqla. Secure access required.
+        </p>
+    </div>
+
+    <!-- UI Logic for Tabs -->
+    <script>
+        const tabLogin = document.getElementById('tab-login');
+        const tabRegister = document.getElementById('tab-register');
+        const formLogin = document.getElementById('login-form');
+        const formRegister = document.getElementById('register-form');
+
+        tabLogin.addEventListener('click', () => {
+            tabLogin.classList.add('border-brand-500', 'text-white');
+            tabLogin.classList.remove('border-transparent', 'text-gray-400');
+            tabRegister.classList.remove('border-brand-500', 'text-white');
+            tabRegister.classList.add('border-transparent', 'text-gray-400');
+            
+            formLogin.classList.remove('hidden');
+            formRegister.classList.add('hidden');
+        });
+
+        tabRegister.addEventListener('click', () => {
+            tabRegister.classList.add('border-brand-500', 'text-white');
+            tabRegister.classList.remove('border-transparent', 'text-gray-400');
+            tabLogin.classList.remove('border-brand-500', 'text-white');
+            tabLogin.classList.add('border-transparent', 'text-gray-400');
+            
+            formRegister.classList.remove('hidden');
+            formLogin.classList.add('hidden');
+        });
+    </script>
+    
+    <!-- Load Auth Module -->
+    <script type="module" src="../js/auth.js"></script>
+</body>
+</html>

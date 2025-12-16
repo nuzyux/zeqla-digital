@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Starter Card</title></head>
+<body>
+
+    <!-- FRONT DESIGN -->
+    <div id="card-front" class="relative w-full max-w-[420px] aspect-[1.586/1] rounded-xl bg-white shadow-2xl overflow-hidden border border-gray-200 select-none transform-gpu">
+        <!-- Texture -->
+        <div class="absolute inset-0 opacity-50" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'0.02\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        <div class="relative z-10 p-6 h-full flex flex-col justify-between text-gray-900">
+            <div class="flex justify-between items-start">
+                <div class="relative w-11 h-8 bg-gradient-to-br from-yellow-200 to-yellow-500 rounded flex items-center justify-center shadow-inner border border-yellow-600 overflow-hidden">
+                    <div class="w-full h-[1px] bg-yellow-700/50 absolute top-1/2 -translate-y-1/2"></div>
+                    <div class="h-full w-[1px] bg-yellow-700/50 absolute left-1/2 -translate-x-1/2"></div>
+                </div>
+                <div class="text-right">
+                    <h2 class="font-serif font-bold text-2xl tracking-wide text-black">ZEQLA</h2>
+                    <p class="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-500 mt-1">Starter Member</p>
+                </div>
+            </div>
+            <div class="mt-4">
+                <p class="text-[9px] uppercase tracking-widest text-gray-400 mb-1">ID Number</p>
+                <div id="inject-card-number" class="font-mono text-2xl tracking-widest text-gray-800">0000 0000 0000 0000</div>
+            </div>
+            <div class="flex justify-between items-end">
+                <div>
+                    <p class="text-[9px] uppercase tracking-widest text-gray-400 mb-1">Authorized User</p>
+                    <p id="inject-card-name" class="font-bold text-sm uppercase tracking-wide text-black">USER NAME</p>
+                </div>
+                <div class="border border-gray-300 px-2 py-0.5 rounded bg-gray-50">
+                    <span id="inject-card-status" class="text-[10px] font-bold uppercase tracking-wider text-gray-600">Active</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BACK DESIGN -->
+    <div id="card-back" class="relative w-full max-w-[420px] aspect-[1.586/1] rounded-xl bg-white shadow-2xl overflow-hidden border border-gray-200 select-none transform-gpu">
+        <div class="absolute inset-0 opacity-50" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'0.02\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        <div class="relative z-10 h-full flex flex-col text-gray-900">
+            <div class="w-full h-12 bg-gray-800 mt-6 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent opacity-30"></div>
+            </div>
+            <div class="px-6 flex-1 flex flex-col justify-between py-4">
+                <div class="flex items-center gap-4 mt-2">
+                    <div class="flex-1 h-10 bg-white border border-gray-300 relative overflow-hidden flex items-center">
+                        <div class="absolute inset-0 opacity-20" style="background-image: repeating-linear-gradient(45deg, #000 0, #000 1px, transparent 0, transparent 50%); background-size: 8px 8px;"></div>
+                        <span class="relative z-10 text-xs font-handwriting text-gray-400 ml-4 font-serif italic">Authorized Signature</span>
+                    </div>
+                    <div class="w-12 h-8 flex items-center justify-center bg-gray-100 border border-gray-200 rounded text-center">
+                        <span class="font-mono text-sm font-bold text-gray-800">123</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-end mt-4">
+                    <div class="text-[8px] text-gray-400 leading-tight max-w-[70%]">
+                        <p class="mb-2">Property of Zeqla. Use constitutes acceptance of terms.</p>
+                        <p>Return to: <span class="text-gray-600 font-bold">ZEQLA HQ</span></p>
+                        <p class="mt-2 font-bold text-gray-500">ZEQLA.COM</p>
+                    </div>
+                    <div class="w-16 h-16 bg-white border border-gray-200 p-0.5 rounded flex items-center justify-center relative">
+                        <i class="fa-solid fa-qrcode text-3xl text-gray-800"></i>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center border-t border-gray-200 pt-2 mt-1">
+                    <span class="text-[9px] uppercase tracking-widest text-gray-400">24/7 Support: help@zeqla.com</span>
+                    <span class="font-serif font-bold text-lg text-gray-300">ZEQLA</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

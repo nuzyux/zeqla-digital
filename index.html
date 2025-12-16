@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeqla | Premium Digital Assets</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Fonts: PT Serif -->
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"PT Serif"', 'serif'],
+                    },
+                    colors: {
+                        page: {
+                            bg: '#F8FAFC',
+                            surface: '#FFFFFF',
+                            card: '#FFFFFF',
+                            border: '#E2E8F0',
+                            text: '#64748B',
+                            heading: '#0F172A'
+                        },
+                        brand: {
+                            400: '#60A5FA',
+                            500: '#2563EB', 
+                            600: '#1D4ED8', 
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-page-bg font-sans text-page-heading antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- NAVIGATION -->
+    <nav class="glass-nav fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                    <img src="assets/images/logo.png" alt="Zeqla" class="h-10 w-auto hover:opacity-90 transition-opacity">
+                </a>
+
+                <!-- Desktop Menu (ABSOLUTE CENTERED) -->
+                <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 space-x-8">
+                    <a href="index.html" class="text-page-heading text-sm font-semibold border-b-2 border-brand-500">Home</a>
+                    <a href="pages/products.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">Products</a>
+                    <a href="pages/pricing.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">Pricing</a>
+                    <a href="pages/about.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">About</a>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="flex items-center gap-5">
+                    <!-- Become a Seller (Left of Cart) -->
+                    <a href="pages/become-seller.html" class="hidden md:flex items-center gap-2 text-sm font-bold text-page-heading hover:text-brand-600 transition-colors bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-full border border-brand-200">
+                        <i class="fa-solid fa-store text-brand-500"></i>
+                        <span>Become a Seller</span>
+                    </a>
+                    
+                    <a href="pages/cart.html" class="text-page-text hover:text-brand-500 transition-colors relative">
+                        <i class="fa-solid fa-cart-shopping text-lg"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-brand-500 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                    </a>
+                    
+                    <div id="nav-auth-section" class="hidden md:flex items-center">
+                        <div class="w-24 h-9 bg-gray-200 rounded animate-pulse"></div>
+                    </div>
+
+                    <button id="mobile-menu-btn" class="md:hidden text-page-text hover:text-page-heading">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-page-surface border-t border-page-border">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-brand-500 bg-page-bg border border-page-border">Home</a>
+                <a href="pages/products.html" class="block px-3 py-2 rounded-md text-base font-medium text-page-text hover:text-page-heading hover:bg-page-bg">Products</a>
+                <a href="pages/pricing.html" class="block px-3 py-2 rounded-md text-base font-medium text-page-text hover:text-page-heading hover:bg-page-bg">Pricing</a>
+                <a href="pages/about.html" class="block px-3 py-2 rounded-md text-base font-medium text-page-text hover:text-page-heading hover:bg-page-bg">About</a>
+                <a href="pages/become-seller.html" class="block px-3 py-2 rounded-md text-base font-bold text-brand-600 hover:bg-page-bg">Become a Seller</a>
+                <a href="pages/auth.html" class="block px-3 py-2 rounded-md text-base font-medium text-brand-500 hover:bg-page-bg">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="min-h-screen">
+        <!-- Hero Section -->
+        <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 flex items-center justify-center overflow-hidden">
+            <!-- Grid Background -->
+            <div class="absolute inset-0 bg-grid-pattern z-0 opacity-100"></div>
+            <!-- Soft Gradient Blob -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-400/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-brand-50 border border-brand-100 text-brand-600 text-xs font-bold uppercase tracking-wide mb-8">
+                    <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                    v1.0 Production Ready
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-page-heading mb-8 leading-tight">
+                    Ship products <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-indigo-600">at warp speed.</span>
+                </h1>
+                
+                <p class="mt-4 text-xl text-page-text max-w-2xl mx-auto mb-12">
+                    Professional UI kits, SaaS starters, and automation scripts. <br>Built for developers who value their time.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="pages/products.html" class="btn-impulse bg-brand-500 text-white px-8 py-4 rounded-lg font-bold text-lg flex items-center justify-center gap-2">
+                        Browse Assets <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </a>
+                    <a href="pages/products.html#free" class="px-8 py-4 rounded-lg font-bold text-page-text bg-white border border-page-border hover:border-gray-400 hover:text-page-heading transition-all flex items-center justify-center shadow-sm">
+                        Free Tools
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- One-Day Websites Section -->
+        <section id="oneday-websites-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 relative z-10">
+            <div class="flex justify-between items-end mb-8 border-b border-page-border pb-4">
+                <div>
+                    <h2 class="text-3xl font-bold text-page-heading flex items-center gap-2">
+                        <i class="fa-solid fa-briefcase text-brand-500"></i> One-Day Websites
+                    </h2>
+                    <p class="text-page-text text-sm mt-1">Enterprise-grade website packages ready for instant deployment.</p>
+                </div>
+                <!-- Scroll Controls -->
+                <div class="flex gap-2">
+                    <button id="scroll-left-btn" class="w-10 h-10 rounded-full bg-white border border-page-border hover:border-brand-500 hover:text-brand-500 flex items-center justify-center transition-all shadow-sm">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button id="scroll-right-btn" class="w-10 h-10 rounded-full bg-white border border-page-border hover:border-brand-500 hover:text-brand-500 flex items-center justify-center transition-all shadow-sm">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Carousel Wrapper (Mask) -->
+            <div class="relative overflow-hidden -mx-4 px-4 py-4">
+                <!-- Carousel Track -->
+                <div id="oneday-carousel-track" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory" style="scrollbar-width: none; -ms-overflow-style: none;">
+                    <!-- Items injected via JS (app.js) -->
+                    <div class="min-w-full flex items-center justify-center py-10 text-page-text gap-3">
+                        <i class="fa-solid fa-circle-notch fa-spin"></i> Loading Enterprise Inventory...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 relative z-10">
+            <div class="flex justify-between items-end mb-10 border-b border-page-border pb-4">
+                <h2 class="text-2xl font-bold text-page-heading flex items-center gap-2">
+                    <i class="fa-solid fa-fire text-brand-500"></i> Featured Drops
+                </h2>
+                <a href="pages/products.html" class="text-brand-500 hover:text-brand-600 text-sm font-bold flex items-center gap-1 transition-colors">
+                    View All <i class="fa-solid fa-chevron-right text-xs"></i>
+                </a>
+            </div>
+            
+            <!-- Grid Container -->
+            <div id="featured-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Javascript will inject cards here (app.js) -->
+                <div class="col-span-full h-64 flex items-center justify-center text-page-text bg-page-card rounded-xl border border-dashed border-page-border">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-notch fa-spin"></i> Loading metadata...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Open Source / Free Section -->
+        <!-- Changed BG to page-bg to match the light theme like One-Day Websites -->
+        <section id="opensource-section" class="bg-page-bg border-t border-page-border py-20 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-10 border-b border-page-border pb-4">
+                    <div>
+                        <div class="inline-block px-2 py-1 rounded bg-green-500/10 border border-green-500/20 text-green-600 text-[10px] font-bold uppercase tracking-widest mb-3">Community Edition</div>
+                        <h2 class="text-3xl font-bold text-page-heading flex items-center gap-2">
+                            <i class="fa-solid fa-code-branch text-green-600"></i> Open Source Tools
+                        </h2>
+                        <p class="text-page-text mt-2 text-sm max-w-xl">Free, MIT-licensed resources to kickstart your next project. No credit card required.</p>
+                    </div>
+                    <a href="pages/products.html#free" class="text-green-600 hover:text-green-700 text-sm font-bold flex items-center gap-2 transition-colors mt-4 md:mt-0">
+                        View All Freebies <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Open Source Grid -->
+                <div id="opensource-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Javascript will inject free items here (app.js) -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SELLER CTA -->
+        <!-- Changed BG to page-bg to match -->
+        <section class="py-24 bg-page-bg relative overflow-hidden border-t border-page-border">
+            <div class="max-w-7xl mx-auto px-4 relative z-10 text-center">
+                <div class="inline-block px-3 py-1 rounded-full border border-brand-500/30 bg-brand-50 text-brand-600 text-xs font-bold uppercase tracking-widest mb-6">
+                    Partner Program
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-page-heading mb-6 font-serif">
+                    Monetize Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-indigo-600">Codebase.</span>
+                </h2>
+                <p class="text-page-text text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Don't let your side projects gather dust. Join Zeqla as a verified seller and reach thousands of developers looking for production-ready architecture.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="pages/become-seller.html" class="btn-impulse bg-brand-600 hover:bg-brand-500 text-white font-bold px-8 py-4 rounded-lg transition-all shadow-lg flex items-center justify-center gap-2">
+                        Apply Now <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="pages/about.html" class="px-8 py-4 bg-white border border-page-border text-page-heading font-bold rounded-lg hover:bg-slate-50 transition-colors">
+                        How it Works
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-page-surface border-t border-page-border py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="w-10 h-10 bg-brand-50 rounded flex items-center justify-center text-brand-500 font-bold mx-auto mb-6 border border-brand-100">Z</div>
+            <p class="text-page-text text-sm">
+                &copy; 2024 Zeqla Digital Store. Built for the modern stack.
+            </p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS (Preserved Order) -->
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/bento.js"></script>
+    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>

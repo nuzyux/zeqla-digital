@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Agency Card</title></head>
+<body>
+
+    <!-- FRONT -->
+    <div id="card-front" class="relative w-full max-w-[420px] aspect-[1.586/1] rounded-xl bg-black shadow-2xl overflow-hidden border border-gray-800 select-none">
+        <div class="absolute inset-0 bg-[#0a0a0a]"></div>
+        <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a), linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a); background-size: 4px 4px; background-position: 0 0, 2px 2px;"></div>
+        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
+        <div class="relative z-10 p-6 h-full flex flex-col justify-between text-white">
+            <div class="flex justify-between items-start">
+                <div class="w-11 h-8 bg-gradient-to-br from-neutral-800 to-black rounded flex items-center justify-center shadow-lg border border-neutral-700">
+                    <div class="w-5 h-3 border border-yellow-600/40 rounded-[2px]"></div>
+                </div>
+                <div class="text-right">
+                    <h2 class="font-serif font-bold text-2xl tracking-wide text-white">ZEQLA</h2>
+                    <p class="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400 mt-1">Agency Member</p>
+                </div>
+            </div>
+            <div class="mt-4">
+                <div id="inject-card-number" class="font-mono text-2xl tracking-widest text-white drop-shadow-md bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-400">0000 0000 0000 0000</div>
+            </div>
+            <div class="flex justify-between items-end">
+                <div>
+                    <p class="text-[9px] uppercase tracking-widest text-gray-500 mb-1">Director</p>
+                    <p id="inject-card-name" class="font-bold text-sm uppercase tracking-wide text-white">USER NAME</p>
+                </div>
+                <div class="border border-white/20 px-3 py-1 rounded bg-white/5">
+                    <span id="inject-card-status" class="text-[10px] font-bold uppercase tracking-wider text-white">Elite</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BACK -->
+    <div id="card-back" class="relative w-full max-w-[420px] aspect-[1.586/1] rounded-xl bg-black shadow-2xl overflow-hidden border border-gray-800 select-none">
+        <div class="absolute inset-0 bg-[#0a0a0a]"></div>
+        <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a), linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a); background-size: 4px 4px; background-position: 0 0, 2px 2px;"></div>
+        <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
+        <div class="relative z-10 h-full flex flex-col text-white">
+            <div class="w-full h-12 bg-[#050505] mt-6 relative border-b border-gray-800">
+                <div class="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-gray-800/30 to-transparent"></div>
+            </div>
+            <div class="px-6 flex-1 flex flex-col justify-between py-4">
+                <div class="flex items-center gap-4 mt-2">
+                    <div class="flex-1 h-10 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 relative overflow-hidden flex items-center rounded-sm border border-gray-400">
+                        <span class="relative z-10 text-xs font-serif italic text-gray-500 ml-4 tracking-widest">AGENCY DIRECTOR</span>
+                    </div>
+                    <div class="w-12 h-8 flex items-center justify-center bg-black border border-yellow-600/30 rounded text-center shadow-[0_0_10px_rgba(202,138,4,0.1)]">
+                        <span class="font-mono text-sm font-bold text-yellow-500">999</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-end mt-4">
+                    <div class="text-[8px] text-gray-500 leading-tight max-w-[70%] font-medium">
+                        <p class="mb-2 text-gray-400">AGENCY TIER / UNLIMITED LICENSE.</p>
+                        <p class="mt-2 font-bold text-white tracking-widest">ZEQLA.COM/ELITE</p>
+                    </div>
+                    <div class="w-16 h-16 bg-black border border-gray-700 p-0.5 rounded flex items-center justify-center relative">
+                         <i class="fa-solid fa-qrcode text-3xl text-yellow-600"></i>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center border-t border-gray-800 pt-2 mt-1">
+                    <span class="text-[9px] uppercase tracking-[0.2em] text-gray-600">Concierge: +1 (800) ZEQ-LA00</span>
+                    <span class="font-serif font-bold text-lg text-white">ZEQLA</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

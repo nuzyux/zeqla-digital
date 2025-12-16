@@ -1,0 +1,264 @@
+/* =========================================
+   1. Typography & Font Face Setup
+   ========================================= */
+
+/* PT Serif - Regular */
+@font-face {
+    font-family: 'PT Serif';
+    src: url('../fonts/PTSerif-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* PT Serif - Italic */
+@font-face {
+    font-family: 'PT Serif';
+    src: url('../fonts/PTSerif-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* PT Serif - Bold */
+@font-face {
+    font-family: 'PT Serif';
+    src: url('../fonts/PTSerif-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* PT Serif - Bold Italic */
+@font-face {
+    font-family: 'PT Serif';
+    src: url('../fonts/PTSerif-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+:root {
+    /* CHANGED: Updated variables to strictly use PT Serif */
+    --font-main: 'PT Serif', serif;
+    --font-heading: 'PT Serif', serif;
+    
+    --color-primary: #1a1a1a;
+    --color-accent: #d4a373;
+    --color-bg: #f9f9f9;
+
+    /* Theme Colors */
+    --white: #ffffff;
+    --dark: #0f172a;
+    --border-color: #e2e8f0;
+    --brand-primary: #2563EB;
+    --brand-glow: rgba(37, 99, 235, 0.5);
+    --bg-card: #ffffff;
+    --text-main: #64748B;
+    --transition: all 0.3s ease;
+}
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* CHANGED: Enforced PT Serif globally */
+  font-family: var(--font-main);
+  color: var(--dark);
+  line-height: 1.6;
+  background: var(--white);
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+/* =========================================
+   3. COMPONENTS & UTILITIES
+   ========================================= */
+
+/* Glassmorphism Navigation (Light) */
+.glass-nav {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Gradient Text (Darker for Light Mode) */
+.text-gradient {
+    background: linear-gradient(to right, #0F172A 20%, #475569 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* =========================================
+   4. BACKGROUND FX
+   ========================================= */
+
+/* Technical Grid Pattern (Dark lines on Light BG) */
+.bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: 
+        linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+    pointer-events: none;
+}
+
+/* =========================================
+   5. INTERACTIVE ELEMENTS
+   ========================================= */
+
+/* Clean Impulse Button */
+.btn-impulse {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px -2px var(--brand-glow);
+    z-index: 1;
+}
+
+.btn-impulse:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px var(--brand-glow);
+    filter: brightness(1.05);
+}
+
+.btn-impulse:active {
+    transform: translateY(0);
+}
+
+/* Filter Buttons */
+.filter-btn {
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+.filter-btn.active {
+    box-shadow: 0 4px 12px -2px var(--brand-glow);
+    border-color: var(--brand-primary);
+}
+
+/* =========================================
+   6. CARDS & GRID SYSTEMS
+   ========================================= */
+
+.product-card {
+    background-color: var(--bg-card);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--brand-primary);
+    box-shadow: 0 12px 30px -10px rgba(37, 99, 235, 0.1);
+}
+
+/* =========================================
+   7. PRICING SPECIFIC STYLES
+   ========================================= */
+
+/* Toggle Switch (Light Mode Optimized) */
+.toggle-checkbox:checked {
+    right: 0;
+    border-color: var(--brand-primary);
+}
+.toggle-checkbox:checked + .toggle-label {
+    background-color: var(--brand-primary);
+}
+.toggle-checkbox:checked + .toggle-label:before {
+    transform: translateX(100%);
+    background: #fff;
+}
+
+.toggle-label {
+    width: 50px;
+    height: 28px;
+    position: relative;
+    display: block;
+    background: #E2E8F0; /* Slate 200 */
+    border-radius: 20px;
+    border: 1px solid #CBD5E1;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.toggle-label:before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    transition: 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Most Popular Card Glow */
+.popular-card-glow {
+    position: relative;
+    border: 2px solid var(--brand-primary);
+    box-shadow: 0 10px 40px -10px var(--brand-glow);
+}
+
+.popular-card-glow::after {
+    content: "MOST POPULAR";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--brand-primary);
+    color: white;
+    padding: 2px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+/* Feature Lists */
+.feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-main);
+    font-size: 0.9rem;
+}
+
+.feature-list i {
+    color: var(--brand-primary);
+    font-size: 1rem;
+}

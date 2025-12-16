@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Zeqla</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Fonts: PT Serif -->
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"PT Serif"', 'serif'],
+                    },
+                    colors: {
+                        page: {
+                            bg: '#F8FAFC',
+                            surface: '#FFFFFF',
+                            card: '#FFFFFF',
+                            border: '#E2E8F0',
+                            text: '#64748B',
+                            heading: '#0F172A'
+                        },
+                        brand: {
+                            400: '#60A5FA',
+                            500: '#2563EB',
+                            600: '#1D4ED8',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-page-bg font-sans text-page-heading antialiased">
+
+    <nav class="glass-nav fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex justify-between items-center h-16">
+                <a href="../index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                    <img src="../assets/images/logo.png" alt="Zeqla" class="h-10 w-auto hover:opacity-90 transition-opacity">
+                </a>
+                
+                <!-- STABLE NAV -->
+                <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 space-x-8">
+                    <a href="../index.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">Home</a>
+                    <a href="products.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">Products</a>
+                    <a href="pricing.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">Pricing</a>
+                    <a href="about.html" class="text-page-heading text-sm font-semibold border-b-2 border-brand-500">About</a>
+                </div>
+
+                <div class="flex items-center gap-5">
+                    <!-- NEW SELLER LINK -->
+                    <a href="become-seller.html" class="hidden md:flex items-center gap-2 text-sm font-bold text-page-heading hover:text-brand-600 transition-colors bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-full border border-brand-200">
+                        <i class="fa-solid fa-store text-brand-500"></i>
+                        <span>Become a Seller</span>
+                    </a>
+
+                    <a href="cart.html" class="text-page-text hover:text-brand-500 transition-colors relative">
+                        <i class="fa-solid fa-cart-shopping text-lg"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-brand-500 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                    </a>
+                    <div id="nav-auth-section" class="hidden md:flex items-center">
+                        <div class="w-24 h-9 bg-gray-200 rounded animate-pulse"></div>
+                    </div>
+
+                    <button id="mobile-menu-btn" class="md:hidden text-page-text hover:text-page-heading">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-page-surface border-t border-page-border">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="../index.html" class="block px-3 py-2 rounded-md text-base font-medium text-page-text hover:text-page-heading hover:bg-page-bg">Home</a>
+                <a href="products.html" class="block px-3 py-2 rounded-md text-base font-medium text-page-text hover:text-page-heading hover:bg-page-bg">Products</a>
+                <a href="pricing.html" class="block px-3 py-2 rounded-md text-base font-medium text-page-text hover:text-page-heading hover:bg-page-bg">Pricing</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-brand-500 bg-page-bg border border-page-border">About</a>
+                <a href="become-seller.html" class="block px-3 py-2 rounded-md text-base font-bold text-brand-600 hover:bg-page-bg">Become a Seller</a>
+                <a href="auth.html" class="block px-3 py-2 rounded-md text-base font-medium text-page-text hover:text-page-heading hover:bg-page-bg">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <div class="relative pt-32 pb-20 overflow-hidden min-h-[50vh] flex items-center">
+        <div class="absolute inset-0 bg-grid-pattern z-0 opacity-100"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-brand-400/5 rounded-full blur-[100px] -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 text-page-heading">
+                Built for <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-indigo-600">Builders.</span>
+            </h1>
+            <p class="text-xl text-page-text max-w-2xl mx-auto mb-10 leading-relaxed">
+                Zeqla is the definitive repository for production-ready code. We bridge the gap between "Hello World" and "Deployed to Production."
+            </p>
+        </div>
+    </div>
+
+    <!-- MISSION / VALUES -->
+    <section class="py-20 bg-page-surface border-t border-page-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-4 text-page-heading">System Architecture</h2>
+                <div class="w-20 h-1 bg-brand-500 rounded-full shadow-sm"></div>
+            </div>
+
+            <!-- MAGIC BENTO GRID -->
+            <div id="bento-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="md:col-span-2 magic-bento-card bg-white border border-page-border shadow-sm rounded-xl">
+                    <div class="magic-bento-content p-8 flex flex-col justify-center">
+                        <div class="w-12 h-12 bg-brand-50 rounded-lg flex items-center justify-center text-brand-600 mb-6 border border-brand-100">
+                            <i class="fa-solid fa-code text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-page-heading mb-3">Clean Architecture</h3>
+                        <p class="text-page-text leading-relaxed">
+                            We don't just sell code; we sell scalability. Every template follows strict SOLID principles and modular design patterns.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="md:row-span-2 magic-bento-card bg-white border border-page-border shadow-sm rounded-xl">
+                    <div class="magic-bento-content p-8 flex flex-col justify-center">
+                        <div class="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600 mb-6 border border-purple-100">
+                            <i class="fa-solid fa-shield-halved text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-page-heading mb-3">Security First</h3>
+                        <p class="text-page-text leading-relaxed">
+                            From penetration testing tools to secured SaaS starters, security is our baseline. All scripts are audited for vulnerabilities.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="magic-bento-card bg-white border border-page-border shadow-sm rounded-xl">
+                    <div class="magic-bento-content p-8">
+                        <div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center text-green-600 mb-6 border border-green-100">
+                            <i class="fa-solid fa-bolt text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-page-heading mb-3">Deployment Ready</h3>
+                        <p class="text-page-text">
+                            Zero-config deployments. Our kits include Dockerfiles, Vercel configs, and CI/CD pipelines out of the box.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="magic-bento-card bg-white border border-page-border shadow-sm rounded-xl">
+                    <div class="magic-bento-content p-8">
+                        <div class="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center text-orange-600 mb-6 border border-orange-100">
+                            <i class="fa-solid fa-mobile-screen text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-page-heading mb-3">Modern Stack</h3>
+                        <p class="text-page-text">
+                            React 19, Tailwind v4, Firebase 10, Python 3.12+. We stay on the bleeding edge so you don't have to upgrade later.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ENTERPRISE DOCUMENTATION -->
+    <section class="py-24 bg-slate-50 border-t border-page-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-3xl font-bold text-page-heading mb-4">Enterprise Documentation & Governance</h2>
+                <p class="text-page-text">Comprehensive guidelines regarding the utilization, licensing, and liability framework for Zeqla digital assets.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Section 1: Usage -->
+                <div class="prose prose-sm prose-slate max-w-none">
+                    <h3 class="flex items-center gap-3 text-xl font-bold text-page-heading border-b border-page-border pb-4 mb-6">
+                        <i class="fa-solid fa-scale-balanced text-brand-500"></i> Acceptable Use Policy (AUP)
+                    </h3>
+                    <div class="space-y-6 text-page-text">
+                        <div>
+                            <strong class="block text-page-heading mb-1">Commercial vs. Personal License</strong>
+                            <p>
+                                Assets purchased under the "Starter" plan are strictly for personal, non-commercial use. This includes personal portfolios and learning projects. 
+                                "Pro" and "Agency" licenses grant commercial rights, allowing the integration of assets into end-products sold to clients. 
+                                However, <strong>reselling the raw source code</strong> or distributing the assets as a standalone library is strictly prohibited under all license tiers.
+                            </p>
+                        </div>
+                        <div>
+                            <strong class="block text-page-heading mb-1">Modification Rights</strong>
+                            <p>
+                                You are granted full modification rights to the source code. You may alter, extend, or remove functionality to suit your specific business requirements. 
+                                Zeqla retains intellectual property rights only over the original, unmodified codebase. Once significantly modified for a unique end-product, ownership of the derivative work (the specific implementation) transfers to the licensee.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Technical -->
+                <div class="prose prose-sm prose-slate max-w-none">
+                    <h3 class="flex items-center gap-3 text-xl font-bold text-page-heading border-b border-page-border pb-4 mb-6">
+                        <i class="fa-solid fa-server text-brand-500"></i> Technical Implementation
+                    </h3>
+                    <div class="space-y-6 text-page-text">
+                        <div>
+                            <strong class="block text-page-heading mb-1">One-Day Website Deployment</strong>
+                            <p>
+                                "One-Day Websites" are architected as static exports or server-side rendered (SSR) applications optimized for Vercel, Netlify, or AWS Amplify. 
+                                Each package includes a `README.md` detailing the environment variables required for deployment. 
+                                We guarantee compatibility with the latest LTS versions of Node.js (v20+) and Python (v3.11+). 
+                                Legacy support is not guaranteed.
+                            </p>
+                        </div>
+                        <div>
+                            <strong class="block text-page-heading mb-1">Security & Dependencies</strong>
+                            <p>
+                                While we strive for zero-vulnerability code at the time of release, modern web development relies heavily on third-party dependencies (npm/pip packages). 
+                                It is the licensee's responsibility to run regular `audit` commands and update dependencies post-purchase. 
+                                API keys for third-party services (e.g., Stripe, OpenAI, Firebase) must be secured server-side. Zeqla is not liable for data breaches resulting from insecure client-side key exposure.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Disclaimers -->
+                <div class="prose prose-sm prose-slate max-w-none">
+                    <h3 class="flex items-center gap-3 text-xl font-bold text-page-heading border-b border-page-border pb-4 mb-6">
+                        <i class="fa-solid fa-triangle-exclamation text-brand-500"></i> Disclaimer of Liability
+                    </h3>
+                    <div class="space-y-6 text-page-text">
+                        <div>
+                            <strong class="block text-page-heading mb-1">"As-Is" Warranty</strong>
+                            <p>
+                                All digital assets, scripts, and templates are provided "as-is" without warranty of any kind, express or implied. 
+                                Zeqla explicitly disclaims warranties of merchantability, fitness for a particular purpose, and non-infringement. 
+                                While we test rigorously, we do not guarantee that our code will function uninterrupted or error-free in every unique server environment or configuration.
+                            </p>
+                        </div>
+                        <div>
+                            <strong class="block text-page-heading mb-1">Financial & Legal Responsibility</strong>
+                            <p>
+                                Products involving financial transactions (e.g., Payment Gateway Integrations, Crypto Bots) or legal frameworks (e.g., Law Firm Templates) are tools, not advice. 
+                                You are solely responsible for compliance with local laws, tax regulations (e.g., VAT/GST), and financial security standards (e.g., PCI-DSS). 
+                                Zeqla is not liable for financial losses, legal disputes, or business interruptions arising from the use of our software.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Support -->
+                <div class="prose prose-sm prose-slate max-w-none">
+                    <h3 class="flex items-center gap-3 text-xl font-bold text-page-heading border-b border-page-border pb-4 mb-6">
+                        <i class="fa-solid fa-life-ring text-brand-500"></i> Support & SLAs
+                    </h3>
+                    <div class="space-y-6 text-page-text">
+                        <div>
+                            <strong class="block text-page-heading mb-1">Scope of Support</strong>
+                            <p>
+                                Technical support is limited to verifying that the product matches the demo description and assisting with initial installation errors caused by our code. 
+                                Support <strong>does not cover</strong> customization, feature additions, or debugging third-party server environments. 
+                                For custom development needs, please contact our enterprise sales team for a separate statement of work.
+                            </p>
+                        </div>
+                        <div>
+                            <strong class="block text-page-heading mb-1">Updates & EOL</strong>
+                            <p>
+                                We provide free updates for major breaking changes for 12 months post-purchase. 
+                                Products marked as "Legacy" or "End of Life (EOL)" will still be available for download but will no longer receive security patches or feature updates.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SELLERS PROGRAM DOCUMENTATION -->
+    <section class="py-24 bg-page-surface border-t border-page-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-3xl font-bold text-page-heading mb-4">Sellers Program</h2>
+                <p class="text-page-text">An exclusive ecosystem for elite developers to monetize their craft. Read our partner guidelines below.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Section 1: Benefits & Revenue -->
+                <div class="prose prose-sm prose-slate max-w-none">
+                    <h3 class="flex items-center gap-3 text-xl font-bold text-page-heading border-b border-page-border pb-4 mb-6">
+                        <i class="fa-solid fa-coins text-brand-500"></i> Revenue & Perks
+                    </h3>
+                    <div class="space-y-6 text-page-text">
+                        <div>
+                            <strong class="block text-page-heading mb-1">Industry-Leading Payouts</strong>
+                            <p>
+                                Listing on Zeqla is 100% free. We operate on a success-based model, taking only a <strong>small 7% commission</strong> on each sale to cover platform maintenance and payment processing. You keep 93% of your revenue, paid out weekly via Crypto or Bank Transfer.
+                            </p>
+                        </div>
+                        <div>
+                            <strong class="block text-page-heading mb-1">Custom Affiliate Engine</strong>
+                            <p>
+                                Every verified seller gets a unique affiliate dashboard. Generate custom promo codes (e.g., `DEV20`) to offer discounts to your audience while tracking conversions. Earn additional bonuses for driving traffic to other Zeqla products.
+                            </p>
+                        </div>
+                        <div>
+                            <strong class="block text-page-heading mb-1">Exclusive Seller Assets</strong>
+                            <p>
+                                Upon verification, you receive a custom "Zeqla Creator" digital card for your wallet, unlocking access to our private Discord community of top-tier developers. Collaborate, bundle products, and access beta features before the public.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Verification & Rules -->
+                <div class="prose prose-sm prose-slate max-w-none">
+                    <h3 class="flex items-center gap-3 text-xl font-bold text-page-heading border-b border-page-border pb-4 mb-6">
+                        <i class="fa-solid fa-shield-halved text-brand-500"></i> Verification & Governance
+                    </h3>
+                    <div class="space-y-6 text-page-text">
+                        <div>
+                            <strong class="block text-page-heading mb-1">Strict Vetting Process</strong>
+                            <p>
+                                Zeqla is a curated marketplace, not an open bazaar. To become a seller, you must submit a portfolio for manual review. We inspect code quality, documentation standards, and design fidelity. Only the top 5% of applicants are accepted to ensure platform prestige.
+                            </p>
+                        </div>
+                        <div>
+                            <strong class="block text-page-heading mb-1">Code Quality Standards</strong>
+                            <p>
+                                All submissions must include comprehensive `README.md` documentation, clean variable naming conventions, and zero critical security vulnerabilities. "Spaghetti code" or asset flips from other marketplaces will result in immediate account suspension.
+                            </p>
+                        </div>
+                        <div>
+                            <strong class="block text-page-heading mb-1">IP & Exclusivity</strong>
+                            <p>
+                                You retain full intellectual property rights to your work. However, by listing on Zeqla, you grant us a non-exclusive license to distribute and market your product. Plagiarism or selling stolen code is a zero-tolerance offense leading to a permanent ban and funds forfeiture.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="become-seller.html" class="inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 px-8 rounded-lg transition-all shadow-lg shadow-brand-500/30">
+                    Apply to Partner Program <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-page-surface border-t border-page-border py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-page-text text-sm">
+            &copy; 2024 Zeqla Digital Store.
+        </div>
+    </footer>
+
+    <script src="../js/data.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/bento.js"></script>
+    <script type="module" src="../js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wallet | Zeqla</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"PT Serif"', 'serif'],
+                        mono: ['"Share Tech Mono"', 'monospace'],
+                    },
+                    colors: {
+                        page: {
+                            bg: '#F8FAFC',
+                            surface: '#FFFFFF',
+                            border: '#E2E8F0',
+                            text: '#64748B',
+                            heading: '#0F172A'
+                        },
+                        brand: {
+                            500: '#2563EB',
+                            600: '#1D4ED8',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .card-carousel-container {
+            perspective: 1000px;
+            overflow: hidden;
+        }
+        .card-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-slide {
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transform-style: preserve-3d;
+        }
+        .flip-container {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        .flip-container.flipped {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .card-back {
+            position: absolute;
+            inset: 0;
+            transform: rotateY(180deg);
+            background: #1e293b;
+            border-radius: 0.75rem;
+            border: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-page-bg font-sans text-page-heading">
+
+    <nav class="glass-nav fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex justify-between items-center h-16">
+                <a href="../index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                    <img src="../assets/images/logo.png" alt="Zeqla" class="h-10 w-auto hover:opacity-90 transition-opacity">
+                </a>
+                
+                <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 space-x-8">
+                    <a href="../index.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">Home</a>
+                    <a href="products.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">Products</a>
+                    <a href="pricing.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">Pricing</a>
+                    <a href="about.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">About</a>
+                </div>
+
+                <div class="flex items-center gap-5">
+                    <!-- NEW SELLER LINK (Moved Here) -->
+                    <a href="become-seller.html" class="hidden md:flex items-center gap-2 text-sm font-bold text-page-heading hover:text-brand-600 transition-colors bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-full border border-brand-200">
+                        <i class="fa-solid fa-store text-brand-500"></i>
+                        <span>Become a Seller</span>
+                    </a>
+
+                    <a href="cart.html" class="text-page-text hover:text-brand-500 transition-colors relative">
+                        <i class="fa-solid fa-cart-shopping text-lg"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-brand-500 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                    </a>
+                    <div id="nav-auth-section" class="hidden md:flex items-center">
+                        <div class="w-24 h-9 bg-gray-200 rounded animate-pulse"></div>
+                    </div>
+
+                    <button id="mobile-menu-btn" class="md:hidden text-page-text hover:text-page-heading">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-page-surface border-t border-page-border">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="../index.html" class="block px-3 py-2 rounded-md text-base font-medium text-brand-500 bg-page-bg border border-page-border">Home</a>
+                <a href="products.html" class="block px-3 py-2 rounded-md text-base font-medium text-page-text hover:text-page-heading hover:bg-page-bg">Products</a>
+                <a href="pricing.html" class="block px-3 py-2 rounded-md text-base font-medium text-page-text hover:text-page-heading hover:bg-page-bg">Pricing</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-page-text hover:text-page-heading hover:bg-page-bg">About</a>
+                <a href="become-seller.html" class="block px-3 py-2 rounded-md text-base font-bold text-brand-600 hover:bg-page-bg">Become a Seller</a>
+                <a href="auth.html" class="block px-3 py-2 rounded-md text-base font-medium text-brand-500 hover:bg-page-bg">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 min-h-screen pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            
+            <!-- Sidebar (Restored to Original Structure) -->
+            <aside class="w-full lg:w-64 flex-shrink-0">
+                <div class="bg-page-surface border border-page-border rounded-xl p-2 sticky top-24 shadow-sm">
+                    <nav class="space-y-1">
+                        <!-- Renamed "Personal ID" to "Wallet" -->
+                        <a href="personal.html" class="flex items-center gap-3 px-4 py-3 bg-brand-500 text-white rounded-lg font-bold text-sm shadow-md transition-all">
+                            <i class="fa-solid fa-wallet w-5 text-center"></i> Wallet
+                        </a>
+                        <a href="profile-products.html" class="flex items-center gap-3 px-4 py-3 text-page-text hover:text-page-heading hover:bg-page-bg rounded-lg font-medium text-sm transition-colors">
+                            <i class="fa-solid fa-box-open w-5 text-center"></i> My Library
+                        </a>
+                        <a href="profile-payments.html" class="flex items-center gap-3 px-4 py-3 text-page-text hover:text-page-heading hover:bg-page-bg rounded-lg font-medium text-sm transition-colors">
+                            <i class="fa-solid fa-credit-card w-5 text-center"></i> Payments
+                        </a>
+                        <a href="profile-settings.html" class="flex items-center gap-3 px-4 py-3 text-page-text hover:text-page-heading hover:bg-page-bg rounded-lg font-medium text-sm transition-colors">
+                            <i class="fa-solid fa-gear w-5 text-center"></i> Settings
+                        </a>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- Content -->
+            <div class="flex-1 max-w-3xl">
+                <div class="flex justify-between items-end mb-6">
+                    <div>
+                        <h1 class="text-3xl font-bold text-page-heading">Digital Wallet</h1>
+                        <p class="text-page-text text-sm mt-1">Manage your identity cards and collectibles.</p>
+                    </div>
+                    <div class="text-right hidden md:block">
+                        <div class="text-xs text-gray-400 uppercase font-bold">Total Cards</div>
+                        <div id="wallet-count" class="text-2xl font-mono font-bold text-page-heading">0</div>
+                    </div>
+                </div>
+                
+                <!-- CAROUSEL -->
+                <div class="bg-slate-900 rounded-2xl p-4 md:p-8 relative overflow-hidden shadow-2xl border border-slate-700 min-h-[400px] flex flex-col justify-center">
+                    
+                    <!-- Background FX -->
+                    <div class="absolute inset-0 bg-grid-white/[0.05] bg-[length:30px_30px]"></div>
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <!-- The Track -->
+                    <div class="card-carousel-container relative z-10 w-full max-w-md mx-auto">
+                        <div id="card-track" class="card-track">
+                            <div class="w-full text-center text-slate-500 py-20">
+                                <i class="fa-solid fa-circle-notch fa-spin text-2xl"></i><br>Loading Wallet...
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Controls -->
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-2 z-20">
+                        <button id="prev-btn" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm flex items-center justify-center transition-all disabled:opacity-30">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                    </div>
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-2 z-20">
+                        <button id="next-btn" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm flex items-center justify-center transition-all disabled:opacity-30">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Pagination Dots -->
+                    <div id="pagination-dots" class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20"></div>
+                </div>
+
+                <!-- Active Card Metadata & Actions -->
+                <div id="card-metadata-panel" class="mt-8 bg-white border border-page-border rounded-xl p-6 shadow-sm opacity-50 pointer-events-none transition-opacity">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <span id="meta-rarity" class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider border border-slate-200">Common</span>
+                            <h2 id="meta-title" class="text-xl font-bold text-page-heading mt-2">Starter Member</h2>
+                            <p class="text-xs text-page-text font-mono mt-1">Acquired: <span id="meta-date">--</span></p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-[10px] text-gray-400 uppercase font-bold">Serial Number</div>
+                            <div id="meta-serial" class="font-mono text-lg font-bold text-brand-600">#0000</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <button id="action-flip" class="flex items-center justify-center gap-2 px-4 py-3 bg-slate-50 border border-page-border rounded-lg text-sm font-bold text-page-heading hover:bg-slate-100 transition-colors">
+                            <i class="fa-solid fa-rotate"></i> Flip Card
+                        </button>
+                        <button id="action-equip" class="flex items-center justify-center gap-2 px-4 py-3 bg-brand-500 text-white rounded-lg text-sm font-bold shadow-md hover:bg-brand-600 transition-colors disabled:opacity-50 disabled:bg-slate-300">
+                            <i class="fa-solid fa-check-circle"></i> Set Active ID
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="../js/personal.js"></script>
+    <script type="module" src="../js/auth.js"></script>
+
+</body>
+</html>

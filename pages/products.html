@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Zeqla</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts: PT Serif -->
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"PT Serif"', 'serif'],
+                    },
+                    colors: {
+                        page: {
+                            bg: '#F8FAFC',
+                            surface: '#FFFFFF',
+                            card: '#FFFFFF',
+                            border: '#E2E8F0',
+                            text: '#64748B',
+                            heading: '#0F172A'
+                        },
+                        brand: {
+                            400: '#60A5FA',
+                            500: '#2563EB',
+                            600: '#1D4ED8',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-page-bg font-sans text-page-heading antialiased">
+
+    <!-- NAVIGATION -->
+    <nav class="glass-nav fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex justify-between items-center h-16">
+                <a href="../index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                    <img src="../assets/images/logo.png" alt="Zeqla" class="h-10 w-auto hover:opacity-90 transition-opacity">
+                </a>
+                
+                <!-- STABLE NAV -->
+                <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 space-x-8">
+                    <a href="../index.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">Home</a>
+                    <a href="products.html" class="text-page-heading text-sm font-semibold border-b-2 border-brand-500">Products</a>
+                    <a href="pricing.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">Pricing</a>
+                    <a href="about.html" class="text-page-text hover:text-page-heading transition-colors text-sm font-medium">About</a>
+                </div>
+
+                <div class="flex items-center gap-5">
+                    <!-- NEW SELLER LINK (Moved Here) -->
+                    <a href="become-seller.html" class="hidden md:flex items-center gap-2 text-sm font-bold text-page-heading hover:text-brand-600 transition-colors bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-full border border-brand-200">
+                        <i class="fa-solid fa-store text-brand-500"></i>
+                        <span>Become a Seller</span>
+                    </a>
+
+                    <a href="cart.html" class="text-page-text hover:text-brand-500 transition-colors relative">
+                        <i class="fa-solid fa-cart-shopping text-lg"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-brand-500 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                    </a>
+                    <div id="nav-auth-section" class="hidden md:flex items-center">
+                        <div class="w-24 h-9 bg-gray-200 rounded animate-pulse"></div>
+                    </div>
+
+                    <button id="mobile-menu-btn" class="md:hidden text-page-text hover:text-page-heading">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-page-surface border-t border-page-border">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="../index.html" class="block px-3 py-2 rounded-md text-base font-medium text-brand-500 bg-page-bg border border-page-border">Home</a>
+                <a href="products.html" class="block px-3 py-2 rounded-md text-base font-medium text-page-text hover:text-page-heading hover:bg-page-bg">Products</a>
+                <a href="pricing.html" class="block px-3 py-2 rounded-md text-base font-medium text-page-text hover:text-page-heading hover:bg-page-bg">Pricing</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-page-text hover:text-page-heading hover:bg-page-bg">About</a>
+                <a href="become-seller.html" class="block px-3 py-2 rounded-md text-base font-bold text-brand-600 hover:bg-page-bg">Become a Seller</a>
+                <a href="auth.html" class="block px-3 py-2 rounded-md text-base font-medium text-brand-500 hover:bg-page-bg">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="pt-24 min-h-screen pb-20">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 border-l-4 border-brand-500 pl-6 py-2">
+                <h1 class="text-3xl font-bold text-page-heading mb-2">Digital Inventory</h1>
+                <p class="text-page-text font-mono text-sm">Select a category to filter the repository.</p>
+            </div>
+            
+            <!-- Filters (Dynamically populated by JS) -->
+            <div class="flex flex-wrap gap-3 mb-10 pb-4 border-b border-page-border" id="product-filters">
+                <!-- Placeholders to prevent layout shift before JS loads -->
+                <button class="filter-btn active px-5 py-2.5 bg-brand-500 text-white rounded-lg font-bold text-xs uppercase tracking-wider shadow-sm transition-all" data-category="all">
+                    All Systems
+                </button>
+            </div>
+
+            <!-- Product Grid -->
+            <!-- UPDATED: 4 columns for compact cards -->
+            <div id="all-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Javascript will inject cards here -->
+                <div class="col-span-full text-center py-20">
+                    <i class="fa-solid fa-terminal text-4xl text-page-border mb-4"></i>
+                    <p class="text-page-text">Querying database...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-page-surface border-t border-page-border py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-4 text-center text-page-text text-sm">
+            &copy; 2024 Zeqla Digital Store.
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="../js/cart.js"></script>
+    <script type="module" src="../js/app.js"></script>
+    <script type="module" src="../js/auth.js"></script>
+</body>
+</html>
